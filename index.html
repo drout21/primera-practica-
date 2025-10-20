@@ -9,232 +9,407 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portafolio Profesional del Ingeniero Elián Osiris - Especialista Senior en Desarrollo Frontend con React y arquitectura web escalable.">
-    <meta name="keywords" content="Ingeniero de Software, Frontend Senior, React, Desarrollo Web, Arquitectura Escalable, Elián Osiris">
-    <meta name="author" content="Ingeniero Elián Osiris (Ficticio)">
-    <title>Ing. Elián Osiris | Arquitecto Frontend Senior</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
+    <title>🏥 Hospital Salud Total - Cuidado, Innovación y Confianza</title>
+    <style>
+        /* BASE & RESET */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        :root {
+            --primary-color: #007bff; /* Azul hospital */
+            --secondary-color: #28a745; /* Verde para éxito/citas */
+            --light-bg: #f8f9fa; /* Fondo claro */
+            --dark-text: #343a40; /* Texto oscuro */
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark-text);
+        }
+
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ccc;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            background: var(--light-bg);
+            text-align: center;
+            padding: 100px 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100"><defs><pattern id="hospital-cross" width="10" height="10" patternUnits="userSpaceOnUse"><rect x="0" y="0" width="10" height="10" fill="white" /><rect x="3" y="0" width="4" height="10" fill="%23007bff" /><rect x="0" y="3" width="10" height="4" fill="%23007bff" /></pattern></defs><rect x="0" y="0" width="100" height="100" fill="url(%23hospital-cross)" opacity="0.05"/></svg>');
+            background-size: cover;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background: var(--secondary-color);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #218838;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--secondary-color);
+            display: inline-block;
+            padding-bottom: 5px;
+            width: 100%;
+        }
+
+        .service-grid, .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .service-card, .doctor-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover, .doctor-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            margin-top: 15px;
+        }
+
+        .doctor-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .testimonials {
+            background: var(--light-bg);
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            font-style: italic;
+        }
+        
+        .testimonial-card strong {
+            display: block;
+            margin-top: 10px;
+            text-align: right;
+            color: var(--primary-color);
+        }
+
+        /* FORMULARIO DE CONTACTO */
+        #contacto {
+            background: #fff;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark-text);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Utilidades para iconos (simulando iconos con texto/emoji) */
+        .icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* MEDIA QUERIES para Responsividad */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none; /* Simplificando nav para móvil */
+            }
+
+            nav {
+                justify-content: center;
+            }
+            .logo {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
-<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="50">
+<body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" aria-label="Barra de Navegación Principal">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#homepage"><i class="fas fa-microchip me-2"></i> Ing. Elián Osiris</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#homepage" aria-label="Ir a la página de inicio">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#sobre-mi" aria-label="Ir a la sección Sobre Mí">Perfil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#proyectos" aria-label="Ir a la sección Proyectos">Proyectos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#experiencia" aria-label="Ir a la sección Experiencia">Trayectoria</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contacto" aria-label="Ir a la sección Contacto">Contacto</a></li>
-                </ul>
-                <button class="btn btn-outline-light ms-3" id="darkModeToggle" aria-label="Alternar modo de visualización">
-                    <i class="fas fa-moon"></i>
-                </button>
+    <header>
+        <nav>
+            <a href="#inicio" class="logo">🏥 Salud Total</a>
+            <div class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#doctores">Doctores</a>
+                <a href="#testimonios">Testimonios</a>
+                <a href="#contacto">Contacto</a>
             </div>
-        </div>
-    </nav>
-
-    <header class="homepage vh-100 d-flex align-items-center justify-content-center text-center text-white" id="homepage" aria-label="Página de Inicio y Presentación">
-        <div class="container">
-            <img src="https://cdn3.iconfinder.com/data/icons/data-science-set-01-2/65/20-512.png" class="img-fluid rounded-circle mb-4 profile-image" alt="Icono de Ingeniero de Software" style="width: 200px; height: 200px;">
-            <h1 class="display-3 fw-bolder mb-3 animate__fadeInUp">Ingeniero Elián Osiris</h1>
-            <p class="lead mb-4 animate__fadeInUp" style="animation-delay: 0.5s;">
-                Arquitecto Frontend Senior <i class="fas fa-laptop-code"></i> <span role="img" aria-label="Cohete de tecnología">🚀</span> | 5+ Años diseñando experiencias con **React**, **HTML5** y **JS**.
-            </p>
-            <a href="#proyectos" class="btn btn-primary btn-lg mt-3 shadow-lg" aria-label="Explorar Proyectos y Casos de Estudio">Ver Casos de Estudio</a>
-        </div>
+        </nav>
     </header>
 
-    <section class="py-5" id="sobre-mi" aria-label="Perfil Profesional y Ética">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10 text-center">
-                    <h2 class="mb-4 display-5"><i class="fas fa-user-tie text-primary me-2"></i> Perfil Profesional</h2>
-                    <p class="lead mb-5 professional-text">
-                        Como Ingeniero de Software Senior, mi trayectoria se fundamenta en la **excelencia técnica** y la **ética profesional inquebrantable**. Me especializo en la construcción de **sistemas escalables** y robustos, priorizando la **accesibilidad (A11y)**, la **seguridad** y el **rendimiento óptimo**. Mi meta es no solo entregar código funcional, sino soluciones arquitectónicas que aporten **valor sostenible** al negocio y al usuario final. <span role="img" aria-label="Lupa de inspección">🔎</span>
-                    </p>
-                </div>
+    <section id="inicio" class="hero">
+        <h1>Tu Salud es Nuestra Prioridad</h1>
+        <p>Expertos en cuidado médico con la tecnología más avanzada.</p>
+        <a href="#contacto" class="btn">Agenda tu Cita Hoy</a>
+    </section>
+
+    <section id="servicios">
+        <h2>Nuestros Servicios Especializados</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <span class="icon">❤️</span>
+                <h3>Cardiología</h3>
+                <p>Diagnóstico y tratamiento avanzado de enfermedades del corazón.</p>
             </div>
-            <div class="row text-center mt-4">
-                <div class="col-md-4 mb-4">
-                    <i class="fas fa-sitemap fa-3x text-primary mb-3"></i>
-                    <h5 class="fw-bold">Arquitectura Escalable</h5>
-                    <p>Diseño y liderazgo en la implementación de patrones de diseño avanzados, asegurando la mantenibilidad y el crecimiento futuro de la aplicación.</p>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
-                    <h5 class="fw-bold">Ética y Calidad del Código</h5>
-                    <p>Compromiso con la documentación exhaustiva, revisión de código rigurosa (code review) y la aplicación de estándares de la industria (DRY, SOLID).</p>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <i class="fas fa-medal fa-3x text-primary mb-3"></i>
-                    <h5 class="fw-bold">Liderazgo de Equipos</h5>
-                    <p>Mentoría y dirección técnica de equipos de desarrollo Junior y Mid, impulsando una cultura de alto rendimiento y mejora continua.</p>
-                </div>
+            <div class="service-card">
+                <span class="icon">🧠</span>
+                <h3>Neurología</h3>
+                <p>Cuidado integral para trastornos del sistema nervioso y cerebro.</p>
+            </div>
+            <div class="service-card">
+                <span class="icon">👶</span>
+                <h3>Pediatría</h3>
+                <p>Atención especializada y cariñosa para niños y adolescentes.</p>
+            </div>
+            <div class="service-card">
+                <span class="icon">🦴</span>
+                <h3>Ortopedia</h3>
+                <p>Soluciones quirúrgicas y terapéuticas para el sistema musculoesquelético.</p>
             </div>
         </div>
     </section>
 
-    <hr class="featurette-divider">
-
-    <section class="py-5 bg-light" id="proyectos" aria-label="Portafolio de Proyectos y Soluciones">
-        <div class="container">
-            <h2 class="text-center mb-5 display-5"><i class="fas fa-project-diagram text-primary me-2"></i> Casos de Estudio Relevantes</h2>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
-                    <div class="card project-card h-100 heartbeat-animation border border-2" style="border-color: var(--primary-color);">
-                        <img src="https://www.tucanit.com/wp-content/uploads/2021/10/almadraba.jpg" class="card-img-top" alt="Sistema de E-commerce de Alto Tráfico">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Sistema E-commerce B2C (Micro-frontends)</h5>
-                            <p class="card-text">Migración de monolito a arquitectura de **Micro-frontends** basada en **React**. Optimización de la tasa de conversión (+15%) mediante A/B testing.</p>
-                            <span class="badge bg-primary me-1">React/MFE</span>
-                            <span class="badge bg-secondary me-1">Performance</span>
-                            <span class="badge bg-info text-dark">JS/TS</span>
-                            <a href="#" class="btn btn-primary mt-3 w-100" aria-label="Ver Proyecto E-commerce B2C">Detalle del Caso</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card project-card h-100 heartbeat-animation border border-2" style="border-color: var(--primary-color);">
-                        <img src="https://www.tucanit.com/wp-content/uploads/2021/10/oficina.jpg" class="card-img-top" alt="Dashboard Empresarial de Analíticas">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Plataforma de Analíticas Empresariales (SaaS)</h5>
-                            <p class="card-text">Desarrollo de un **Design System** propietario en **CSS Modules** para mantener la coherencia UI/UX en múltiples módulos.</p>
-                            <span class="badge bg-primary me-1">Design System</span>
-                            <span class="badge bg-warning text-dark me-1">CSS3</span>
-                            <span class="badge bg-danger">Accesibilidad</span>
-                            <a href="#" class="btn btn-primary mt-3 w-100" aria-label="Ver Proyecto Dashboard SaaS">Detalle del Caso</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card project-card h-100 heartbeat-animation border border-2" style="border-color: var(--primary-color);">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMIjzhc7m8zFXXhW09E_ZnBNVNRCAwdKZHAQ&s" class="card-img-top" alt="Prototipo de Aplicación Móvil de Finanzas">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">Aplicación Móvil Híbrida (FinTech)</h5>
-                            <p class="card-text">Implementación de la capa UI/UX con enfoque **Mobile First** usando **Vanilla JS** y Bootstrap para una PWA de alto rendimiento.</p>
-                            <span class="badge bg-primary me-1">Mobile First</span>
-                            <span class="badge bg-secondary me-1">Bootstrap 5</span>
-                            <span class="badge bg-success">Vanilla JS</span>
-                            <a href="#" class="btn btn-primary mt-3 w-100" aria-label="Ver Proyecto FinTech PWA">Detalle del Caso</a>
-                        </div>
-                    </div>
-                </div>
+    <section id="doctores">
+        <h2>Conoce a Nuestro Equipo Médico</h2>
+        <div class="doctors-grid">
+            <div class="doctor-card">
+                <img src="https://via.placeholder.com/100/28a745/ffffff?text=Dra" alt="Doctora Ana Gómez">
+                <h3>Dra. Ana Gómez</h3>
+                <p>Cardióloga Jefa</p>
+                <small>Especialista en arritmias.</small>
+            </div>
+            <div class="doctor-card">
+                <img src="https://via.placeholder.com/100/007bff/ffffff?text=Dr" alt="Doctor Juan Pérez">
+                <h3>Dr. Juan Pérez</h3>
+                <p>Neurólogo Senior</p>
+                <small>Investigador en enfermedades neurodegenerativas.</small>
+            </div>
+            <div class="doctor-card">
+                <img src="https://via.placeholder.com/100/28a745/ffffff?text=Dra" alt="Doctora María Soto">
+                <h3>Dra. María Soto</h3>
+                <p>Pediatra General</p>
+                <small>Experta en desarrollo infantil.</small>
             </div>
         </div>
     </section>
 
-    <hr class="featurette-divider">
-
-    <section class="py-5" id="experiencia" aria-label="Trayectoria Profesional y Logros">
-        <div class="container">
-            <h2 class="text-center mb-5 display-5"><i class="fas fa-briefcase text-primary me-2"></i> Trayectoria Profesional</h2>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
-                    <div class="card experience-card h-100 border border-primary">
-                        <div class="card-body text-center">
-                            <i class="fas fa-building fa-3x text-primary mb-3"></i>
-                            <h5 class="card-title fw-bold">Arquitecto Frontend Senior - Nexus Global</h5>
-                            <p class="text-muted">Enero 2023 - Presente</p>
-                            <p class="card-text">Lideré la reestructuración de la arquitectura FE, resultando en una reducción del 40% en deuda técnica y una mejora del 25% en métricas Core Web Vitals.</p>
-                            <span class="badge bg-info text-dark">Arquitectura</span>
-                            <span class="badge bg-success">Liderazgo</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card experience-card h-100 border border-primary">
-                        <div class="card-body text-center">
-                            <i class="fas fa-building fa-3x text-primary mb-3"></i>
-                            <h5 class="card-title fw-bold">Ingeniero de Software - InnovaTech Solutions</h5>
-                            <p class="text-muted">Febrero 2020 - Diciembre 2022</p>
-                            <p class="card-text">Desarrollo de módulos críticos de la aplicación B2B. Implementación de CI/CD para automatizar tests unitarios y de integración con Jest/Cypress.</p>
-                            <span class="badge bg-warning text-dark">Testing</span>
-                            <span class="badge bg-secondary">CI/CD</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card experience-card h-100 border border-primary">
-                        <div class="card-body text-center">
-                            <i class="fas fa-building fa-3x text-primary mb-3"></i>
-                            <h5 class="card-title fw-bold">Desarrollador Junior/Mid - Momentum Startups</h5>
-                            <p class="text-muted">Enero 2019 - Enero 2020</p>
-                            <p class="card-text">Maquetación semántica y optimización de activos estáticos. Establecimiento de las primeras guías de estilo con CSS3/Sass.</p>
-                            <span class="badge bg-danger">HTML5/CSS3</span>
-                            <span class="badge bg-primary">Optimización</span>
-                        </div>
-                    </div>
-                </div>
+    <section id="testimonios" class="testimonials">
+        <h2>Historias de Éxito y Confianza</h2>
+        <div class="service-grid"> <div class="testimonial-card">
+                <p>"La atención fue excepcional desde el primer momento. La Dra. Gómez salvó la vida de mi padre. ¡Recomendados al 100%!"</p>
+                <strong>— Carlos R.</strong>
+            </div>
+            <div class="testimonial-card">
+                <p>"El equipo de Pediatría es maravilloso. Mi hija se sintió cómoda y segura. Tienen una calidez humana incomparable."</p>
+                <strong>— Sofía M.</strong>
+            </div>
+            <div class="testimonial-card">
+                <p>"Me realizaron una cirugía de rodilla y la recuperación ha sido fantástica. Tecnología de punta y personal muy profesional."</p>
+                <strong>— Javier L.</strong>
             </div>
         </div>
     </section>
 
-    <hr class="featurette-divider">
+    <section id="contacto">
+        <h2>Solicita una Cita o Pide Información</h2>
+        <div class="contact-form">
+            <form id="citaForm">
+                <label for="nombre">Nombre Completo</label>
+                <input type="text" id="nombre" name="nombre" required>
 
-    <section class="py-5 bg-light" id="contacto" aria-label="Formulario de Contacto Profesional">
-        <div class="container">
-            <h2 class="text-center mb-5 display-5"><i class="fas fa-envelope-open-text text-primary me-2"></i> Contacto Profesional</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <p class="text-center mb-4">
-                        Estoy disponible para consultoría o nuevas oportunidades de ingeniería. Por favor, contacte para discutir sus necesidades de arquitectura.
-                    </p>
-                    <form id="contactForm">
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Nombre Completo:</label>
-                            <input type="text" class="form-control" id="name" required aria-required="true" aria-label="Campo para ingresar el nombre completo">
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Correo Electrónico Corporativo:</label>
-                            <input type="email" class="form-control" id="email" required aria-required="true" aria-label="Campo para ingresar el correo electrónico corporativo">
-                        </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Mensaje o Propuesta:</label>
-                            <textarea class="form-control" id="message" rows="5" required aria-required="true" aria-label="Campo para ingresar el mensaje o propuesta"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Enviar Propuesta <i class="far fa-paper-plane ms-2"></i></button>
-                    </form>
-                    <div class="text-center mt-5">
-                        <h5 class="mb-3">Conéctate en Redes Profesionales</h5>
-                        <a href="https://www.linkedin.com/" target="_blank" class="text-decoration-none mx-2" aria-label="Perfil de LinkedIn">
-                            <i class="fab fa-linkedin fa-2x text-primary"></i>
-                        </a>
-                        <a href="https://github.com/" target="_blank" class="text-decoration-none mx-2" aria-label="Perfil de GitHub">
-                            <i class="fab fa-github fa-2x text-dark"></i>
-                        </a>
-                        <a href="https://twitter.com/" target="_blank" class="text-decoration-none mx-2" aria-label="Perfil de Twitter">
-                            <i class="fab fa-twitter fa-2x text-info"></i>
-                        </a>
-                        <a href="https://stackoverflow.com/" target="_blank" class="text-decoration-none mx-2" aria-label="Perfil de Stack Overflow">
-                            <i class="fab fa-stack-overflow fa-2x text-warning"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono">
+
+                <label for="servicio">Servicio de Interés</label>
+                <select id="servicio" name="servicio" required>
+                    <option value="">-- Seleccione --</option>
+                    <option value="cardiologia">Cardiología</option>
+                    <option value="neurologia">Neurología</option>
+                    <option value="pediatria">Pediatría</option>
+                    <option value="ortopedia">Ortopedia</option>
+                    <option value="general">Cita General</option>
+                </select>
+
+                <label for="mensaje">Mensaje (Opcional)</label>
+                <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+
+                <button type="submit" class="btn">Enviar Solicitud de Cita</button>
+            </form>
+            <p id="formMessage" style="margin-top: 15px; font-weight: bold;"></p>
         </div>
     </section>
 
-    <footer class="bg-dark text-white py-4" aria-label="Pie de página y Derechos de Autor">
-        <div class="container text-center">
-            <p class="mb-0 small">
-                &copy; 2025 Ing. Elián Osiris. <i class="fas fa-code text-secondary me-1"></i> Construyendo con Ética y Arquitectura.
-            </p>
-        </div>
+    <footer>
+        <p>&copy; 2025 Hospital Salud Total. Todos los derechos reservados. | Dirección: Calle Ficticia #123, Ciudad.</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. Manejo del Formulario de Contacto
+            const form = document.getElementById('citaForm');
+            const formMessage = document.getElementById('formMessage');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // Evita el envío real del formulario
+
+                // Simulación de envío de datos
+                const nombre = document.getElementById('nombre').value;
+                const servicio = document.getElementById('servicio').value;
+
+                // Validación simple
+                if (nombre && servicio) {
+                    formMessage.textContent = `✅ Solicitud enviada, ${nombre}. Nuestro equipo de ${servicio.charAt(0).toUpperCase() + servicio.slice(1)} se comunicará pronto.`;
+                    formMessage.style.color = 'var(--secondary-color)';
+                    form.reset(); // Limpia el formulario
+                } else {
+                    formMessage.textContent = '❌ Por favor, complete su nombre y el servicio de interés.';
+                    formMessage.style.color = 'red';
+                }
+                
+                // Limpiar el mensaje después de 5 segundos
+                setTimeout(() => {
+                    formMessage.textContent = '';
+                }, 5000);
+            });
+
+            // 2. Navegación Suave (Smooth Scrolling)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>
-
 
     <script type="module" src="script.js"></script>
   </body>
